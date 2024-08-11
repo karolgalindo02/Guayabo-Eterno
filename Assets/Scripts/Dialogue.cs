@@ -9,7 +9,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
-    [SerializeField] private GameObject playerPrefab; // Nuevo campo para el prefab del jugador
+    [SerializeField] private GameObject playerPrefab;
 
     private float typingTime = 0.05f;
 
@@ -80,7 +80,6 @@ public class Dialogue : MonoBehaviour
     {
         if (collision.gameObject == playerPrefab)
         {
-            Debug.Log("Player entered collision");
             isPlayerInRange = true;
             dialogueMark.SetActive(true);
         }
@@ -90,7 +89,6 @@ public class Dialogue : MonoBehaviour
     {
         if (collision.gameObject == playerPrefab)
         {
-            Debug.Log("Player exited collision");
             isPlayerInRange = false;
             dialogueMark.SetActive(false);
         }

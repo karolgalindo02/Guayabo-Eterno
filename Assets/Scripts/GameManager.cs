@@ -68,30 +68,32 @@ public class GameManager : MonoBehaviour
   }
 
   // Método llamado una vez por cuadro.
-  void Update() {
+void Update() {
     // Verifica si el rompecabezas está completo.
     if (!shuffling && CheckCompletion()) {
-      shuffling = true;
-      StartCoroutine(WaitShuffle(0.5f));
+        shuffling = true;
+        StartCoroutine(WaitShuffle(0.5f));
     }
 
-    // Detecta si se ha hecho clic en el ratón.
+    // Detecta si se ha hecho clic con el botón izquierdo del ratón.
     if (Input.GetMouseButtonDown(0)) {
-      RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-      if (hit) {
-        // Recorre la lista de piezas para encontrar la que se ha hecho clic.
-        for (int i = 0; i < pieces.Count; i++) {
-          if (pieces[i] == hit.transform) {
-            // Verifica si se puede intercambiar la pieza en alguna dirección válida.
-            if (SwapIfValid(i, -size, size)) { break; }
-            if (SwapIfValid(i, +size, size)) { break; }
-            if (SwapIfValid(i, -1, 0)) { break; }
-            if (SwapIfValid(i, +1, size - 1)) { break; }
-          }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        // Lanza un rayo desde la cámara hacia donde el ratón está apuntando.
+        if (Physics.Raycast(ray, out hit)) {
+            // Recorre la lista de piezas para encontrar la que se ha hecho clic.
+            for (int i = 0; i < pieces.Count; i++) {
+                if (pieces[i] == hit.transform) {
+                    // Verifica si se puede intercambiar la pieza en alguna dirección válida.
+                    if (SwapIfValid(i, -size, size)) { break; }
+                    if (SwapIfValid(i, +size, size)) { break; }
+                    if (SwapIfValid(i, -1, 0)) { break; }
+                    if (SwapIfValid(i, +1, size - 1)) { break; }
+                }
+            }
         }
-      }
     }
-  }
+}
 
   // Verifica si es válido intercambiar la pieza actual con la posición vacía.
   private bool SwapIfValid(int i, int offset, int colCheck) {

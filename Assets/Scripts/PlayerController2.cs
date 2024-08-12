@@ -23,14 +23,12 @@ public class PlayerController2 : MonoBehaviour
     Vector3 castPos = transform.position;
     castPos.y -= 1f;
 
-    Debug.DrawRay(castPos, -transform.up * Mathf.Infinity, Color.red); // Dibuja el Raycast en la escena
+    Debug.DrawRay(castPos, -transform.up * Mathf.Infinity, Color.red); 
 
     if (Physics.Raycast(castPos, -transform.up, out hit, Mathf.Infinity, groundLayer))
     {
         if (hit.collider != null)
         {
-            Debug.Log("Ground detected at position: " + hit.point);
-
             Vector3 movePos = transform.position;
             movePos.y = hit.point.y + groundDist; // Cambié esto para ajustar correctamente la posición
             transform.position = movePos;

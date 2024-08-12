@@ -76,18 +76,17 @@ public class DialogueParts : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == playerPrefab)
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject == playerPrefab)
         {
+            
             isPlayerInRange = true;
             dialogueMark.SetActive(true);
         }
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject == playerPrefab)
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject == playerPrefab)
         {
             isPlayerInRange = false;
             dialogueMark.SetActive(false);

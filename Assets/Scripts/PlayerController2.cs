@@ -29,6 +29,8 @@ public class PlayerController2 : MonoBehaviour
     {
         if (hit.collider != null)
         {
+            //Debug.Log("Ground detected at position: " + hit.point);
+
             Vector3 movePos = transform.position;
             movePos.y = hit.point.y + groundDist; // Cambié esto para ajustar correctamente la posición
             transform.position = movePos;

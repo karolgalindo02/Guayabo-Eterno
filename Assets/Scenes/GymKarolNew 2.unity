@@ -513,7 +513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 629731120}
   - component: {fileID: 629731119}
-  - component: {fileID: 629731118}
+  - component: {fileID: 629731121}
   m_Layer: 0
   m_Name: Pieza2
   m_TagString: Pieza
@@ -521,23 +521,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &629731118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629731117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f0492fc00cd1d4bb95b91db2b01717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueMark: {fileID: 1880652173}
-  dialoguePanel: {fileID: 0}
-  dialogueText: {fileID: 0}
-  dialogueLines: []
-  playerPrefab: {fileID: 234215550}
 --- !u!65 &629731119
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -567,6 +550,24 @@ Transform:
   m_Father: {fileID: 1918686947}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &629731121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629731117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1e8db9b16c75a43855af091027f0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueMark: {fileID: 1880652173}
+  dialoguePanel: {fileID: 602786635}
+  dialogueText: {fileID: 984062120}
+  dialogueLines:
+  - Has recogido la pieza
+  playerPrefab: {fileID: 234215550}
 --- !u!1001 &731103590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -654,7 +655,7 @@ GameObject:
   m_Component:
   - component: {fileID: 749430805}
   - component: {fileID: 749430804}
-  - component: {fileID: 749430803}
+  - component: {fileID: 749430806}
   m_Layer: 0
   m_Name: Pieza5
   m_TagString: Pieza
@@ -662,23 +663,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &749430803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 749430802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f0492fc00cd1d4bb95b91db2b01717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueMark: {fileID: 1508910397}
-  dialoguePanel: {fileID: 0}
-  dialogueText: {fileID: 0}
-  dialogueLines: []
-  playerPrefab: {fileID: 234215550}
 --- !u!65 &749430804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -708,6 +692,24 @@ Transform:
   m_Father: {fileID: 1918686947}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749430806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749430802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1e8db9b16c75a43855af091027f0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueMark: {fileID: 1508910397}
+  dialoguePanel: {fileID: 602786635}
+  dialogueText: {fileID: 984062120}
+  dialogueLines:
+  - Has recogido la pieza
+  playerPrefab: {fileID: 234215550}
 --- !u!1 &779676067
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,7 +796,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787564516}
   - component: {fileID: 787564515}
-  - component: {fileID: 787564514}
+  - component: {fileID: 787564517}
   m_Layer: 0
   m_Name: Pieza4
   m_TagString: Pieza
@@ -802,23 +804,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &787564514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787564513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f0492fc00cd1d4bb95b91db2b01717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueMark: {fileID: 788490054}
-  dialoguePanel: {fileID: 0}
-  dialogueText: {fileID: 0}
-  dialogueLines: []
-  playerPrefab: {fileID: 234215550}
 --- !u!65 &787564515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -848,6 +833,24 @@ Transform:
   m_Father: {fileID: 1918686947}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &787564517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787564513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1e8db9b16c75a43855af091027f0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueMark: {fileID: 788490054}
+  dialoguePanel: {fileID: 602786635}
+  dialogueText: {fileID: 984062120}
+  dialogueLines:
+  - Has recogido la pieza
+  playerPrefab: {fileID: 234215550}
 --- !u!1 &788490054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,7 +1643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1508073846}
   - component: {fileID: 1508073845}
-  - component: {fileID: 1508073844}
+  - component: {fileID: 1508073847}
   m_Layer: 0
   m_Name: Pieza3
   m_TagString: Pieza
@@ -1648,23 +1651,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1508073844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508073843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86f0492fc00cd1d4bb95b91db2b01717, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueMark: {fileID: 31620799}
-  dialoguePanel: {fileID: 0}
-  dialogueText: {fileID: 0}
-  dialogueLines: []
-  playerPrefab: {fileID: 234215550}
 --- !u!65 &1508073845
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1694,6 +1680,24 @@ Transform:
   m_Father: {fileID: 1918686947}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1508073847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508073843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1e8db9b16c75a43855af091027f0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueMark: {fileID: 31620799}
+  dialoguePanel: {fileID: 602786635}
+  dialogueText: {fileID: 984062120}
+  dialogueLines:
+  - Has recogido la pieza
+  playerPrefab: {fileID: 234215550}
 --- !u!1 &1508910397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,7 +1824,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572310948}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 42.784412, y: 16.552414, z: 17.229118}
@@ -1834,14 +1838,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1572310948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0380155f4d69aaf419297fa8d93b09b5, type: 3}
+  m_Script: {fileID: 11500000, guid: ce1e8db9b16c75a43855af091027f0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueMark: {fileID: 1190286167}
   dialoguePanel: {fileID: 602786635}
   dialogueText: {fileID: 984062120}
   dialogueLines:
-  - Has encontrado la pieza
+  - Has recogido la pieza
   playerPrefab: {fileID: 234215550}
 --- !u!1 &1583488596 stripped
 GameObject:

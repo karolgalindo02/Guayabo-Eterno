@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; // Asegúrate de tener esta referencia para usar TMP_Text
 
 public class ControllerParts : MonoBehaviour
 {
     public GameObject[] gameObjects;  // Array para asignar los GameObjects
+    public TMP_Text collectedPartsText; // Campo para el texto en el canvas
     private int activeIndex1 = -1;
     private int activeIndex2 = -1;
-
-
+    private int collectedPartsCount = 0; // Contador de piezas recogidas
 
     void Start()
     {
         ActivateRandomObjects();
+        UpdateCollectedPartsText(); // Inicializar el texto del contador
     }
 
     void Update() {
@@ -39,7 +41,23 @@ public class ControllerParts : MonoBehaviour
         gameObjects[activeIndex2].SetActive(true);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // Verificar si el objeto con el que colisionamos es una de las piezas activas
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            if (other.gameObject == gameObjects[i] && gameObjects[i].activeSelf)
+            {
+                gameObjects[i].SetActive(false); // Desactivar la pieza recogida
+                collectedPartsCount++; // Incrementar el contador de piezas recogidas
+                UpdateCollectedPartsText(); // Actualizar el texto del contador
+                break;
+            }
+        }
+    }
 
-
-
+    private void UpdateCollectedPartsText()
+    {
+        collectedPartsText.text = "" + collectedPartsCount;
+    }
 }

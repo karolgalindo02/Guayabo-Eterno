@@ -6,11 +6,13 @@ public class AudioManagment : MonoBehaviour
 {
    public static AudioManagment Instance;
    public Sound[] musicSounds, sfxSounds;
+   [Header ("Audio Source")]
    public AudioSource musicSource, sfxSource;
 
+    [Header ("Audio Clip")]
    public AudioClip Theme;
    public AudioClip Death;
-   public AudioClip Jump;
+   public AudioClip Walk;
    public AudioClip Win;
 
 

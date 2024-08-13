@@ -11,6 +11,9 @@ public class ControllerParts : MonoBehaviour
     private int activeIndex2 = -1;
     public int collectedPartsCount = 0; // Contador de piezas recogidas
 
+    [SerializeField] private GameObject GameBoard;
+    [SerializeField] private GameObject GameManager;
+
     void Start()
     {
         ActivateRandomObjects();
@@ -23,24 +26,33 @@ public class ControllerParts : MonoBehaviour
 
     public void ActivateRandomObjects()
     {
-        
-        List<GameObject> validGameObjects = new List<GameObject>();
-        // Desactivar todos los GameObjects primero
-        foreach (GameObject obj in gameObjects)
+        Debug.Log(gameObjects.Count);
+        if(gameObjects.Count != 0)
+        { 
+            List<GameObject> validGameObjects = new List<GameObject>();
+            // Desactivar todos los GameObjects primero
+            foreach (GameObject obj in gameObjects)
+            {
+                obj.SetActive(false);
+            }
+
+            // Seleccionar dos índices aleatorios diferentes
+            activeIndex1 = Random.Range(0, gameObjects.Count);
+            do
+            {
+                activeIndex2 = Random.Range(0, gameObjects.Count);
+            } while (activeIndex2 == activeIndex1);
+
+            // Activar los GameObjects seleccionados
+            gameObjects[activeIndex1].SetActive(true);
+            gameObjects[activeIndex2].SetActive(true);
+        }else
         {
-            obj.SetActive(false);
+            //logica para activar el puzzle
+            //Debug.Log("Piezas recolectadas");
+            GameManager.SetActive(true);
+            GameBoard.SetActive(true);
         }
-
-        // Seleccionar dos índices aleatorios diferentes
-        activeIndex1 = Random.Range(0, gameObjects.Count);
-        do
-        {
-            activeIndex2 = Random.Range(0, gameObjects.Count);
-        } while (activeIndex2 == activeIndex1);
-
-        // Activar los GameObjects seleccionados
-        gameObjects[activeIndex1].SetActive(true);
-        gameObjects[activeIndex2].SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -14,6 +14,8 @@ public class DialoguePlayer : MonoBehaviour
     [SerializeField] private GameObject polaroidImage; // New field for polaroid image
     [SerializeField] private FollowPlayer followPlayerScript; // Referencia al script FollowPlayer
 
+
+    public GameObject parts;
     private float typingTime = 0.05f;
 
     private bool isPlayerInRange;
@@ -71,6 +73,8 @@ public class DialoguePlayer : MonoBehaviour
             followPlayerScript.StartFollowing();
             isFollowingPlayer = true; // Set the flag to true
             dialogueMark.SetActive(false); // Deactivate dialogue mark
+
+            parts.SetActive(true);
         }
     }
 

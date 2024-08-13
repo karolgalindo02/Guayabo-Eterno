@@ -1,42 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // Importar para reiniciar la escena
-using UnityEngine.UI; // Importar para manejar UI
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController2 : MonoBehaviour
 {
     public float speed;
-    public float jumpForce = 5f; // Fuerza del salto
-    public float groundDist = 0.2f; // Distancia para detectar el suelo
+    public float jumpForce = 5f;
+    public float groundDist = 0.2f;
     public LayerMask groundLayer;
     public Rigidbody rb;
     public SpriteRenderer sr;
     private Animator animator;
-    [SerializeField] private GameObject blinkPanel; // Panel para el efecto de blink
-    [SerializeField] private GameObject mirrorPrefab; // Prefab del espejo
-    public float customGravity = -20f; // Gravedad personalizada
+    [SerializeField] private GameObject blinkPanel;
+    [SerializeField] private GameObject mirrorPrefab;
+    public float customGravity = -20f;
 
     private CanvasGroup blinkCanvasGroup;
-    private bool isGrounded; // Verificar si el jugador está en el suelo
+    private bool isGrounded;
+
+    // Referencia al GameObject con el script ControllerParts
+    [SerializeField] private GameObject controllerPartsObject;
+    private ControllerParts controllerParts;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>(); // Obtener el Animator del hijo
+        animator = GetComponentInChildren<Animator>();
 
-        // Verificar si el CanvasGroup está adjunto, si no, agregarlo
         blinkCanvasGroup = blinkPanel.GetComponent<CanvasGroup>();
         if (blinkCanvasGroup == null)
         {
             blinkCanvasGroup = blinkPanel.AddComponent<CanvasGroup>();
         }
-        blinkCanvasGroup.alpha = 0; // Asegurarse de que el alpha esté en 0 al inicio
+        blinkCanvasGroup.alpha = 0;
+
+        // Obtener la referencia al componente ControllerParts
+        if (controllerPartsObject != null)
+        {
+            controllerParts = controllerPartsObject.GetComponent<ControllerParts>();
+        }
     }
 
     void Update()
     {
-        // Detectar si el jugador está en el suelo usando SphereCast
         isGrounded = Physics.SphereCast(transform.position, 0.5f, Vector3.down, out RaycastHit hit, groundDist, groundLayer);
 
         float x = Input.GetAxis("Horizontal");
@@ -53,16 +61,13 @@ public class PlayerController2 : MonoBehaviour
             sr.flipX = false;
         }
 
-        // Establecer el parámetro "walking" del Animator
         animator.SetBool("walking", x != 0.0f || y != 0.0f);
 
-        // Detectar entrada de salto
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        // Aplicar gravedad personalizada si no está en el suelo
         if (!isGrounded)
         {
             rb.AddForce(Vector3.up * customGravity);
@@ -71,7 +76,7 @@ public class PlayerController2 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == mirrorPrefab) // Comparar con el prefab del espejo
+        if (collision.gameObject == mirrorPrefab)
         {
             StartCoroutine(BlinkAndRestart());
         }
@@ -90,6 +95,25 @@ public class PlayerController2 : MonoBehaviour
         }
 
         blinkCanvasGroup.alpha = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Vector3 newPlayerPosition = new Vector3(25.1000004f, 18.5f, -31.2999992f);
+        transform.position = newPlayerPosition;
+
+
+        // Activar objetos aleatorios desde el ControllerParts
+        
+        
+        controllerParts.ActivateRandomObjects();
+        
+
+        yield return new WaitForSeconds(1.2f); // el tiempo es para que el jugador2 tenga tiempo de ir a la pos del 1
+
+        elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            blinkCanvasGroup.alpha = Mathf.Clamp01(1 - (elapsedTime / duration));
+            yield return null;
+        }
+        blinkCanvasGroup.alpha = 0;
     }
 }

@@ -5,11 +5,11 @@ using TMPro; // Asegúrate de tener esta referencia para usar TMP_Text
 
 public class ControllerParts : MonoBehaviour
 {
-    public GameObject[] gameObjects;  // Array para asignar los GameObjects
+    public List<GameObject> gameObjects;  // Array para asignar los GameObjects
     public TMP_Text collectedPartsText; // Campo para el texto en el canvas
     private int activeIndex1 = -1;
     private int activeIndex2 = -1;
-    private int collectedPartsCount = 0; // Contador de piezas recogidas
+    public int collectedPartsCount = 0; // Contador de piezas recogidas
 
     void Start()
     {
@@ -23,6 +23,8 @@ public class ControllerParts : MonoBehaviour
 
     public void ActivateRandomObjects()
     {
+        
+        List<GameObject> validGameObjects = new List<GameObject>();
         // Desactivar todos los GameObjects primero
         foreach (GameObject obj in gameObjects)
         {
@@ -30,10 +32,10 @@ public class ControllerParts : MonoBehaviour
         }
 
         // Seleccionar dos índices aleatorios diferentes
-        activeIndex1 = Random.Range(0, gameObjects.Length);
+        activeIndex1 = Random.Range(0, gameObjects.Count);
         do
         {
-            activeIndex2 = Random.Range(0, gameObjects.Length);
+            activeIndex2 = Random.Range(0, gameObjects.Count);
         } while (activeIndex2 == activeIndex1);
 
         // Activar los GameObjects seleccionados
@@ -43,8 +45,9 @@ public class ControllerParts : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         // Verificar si el objeto con el que colisionamos es una de las piezas activas
-        for (int i = 0; i < gameObjects.Length; i++)
+        for (int i = 0; i < gameObjects.Count; i++)
         {
             if (other.gameObject == gameObjects[i] && gameObjects[i].activeSelf)
             {
@@ -56,7 +59,7 @@ public class ControllerParts : MonoBehaviour
         }
     }
 
-    private void UpdateCollectedPartsText()
+    public void UpdateCollectedPartsText()
     {
         collectedPartsText.text = "" + collectedPartsCount;
     }

@@ -2028,6 +2028,7 @@ MonoBehaviour:
   - {fileID: 1081925808}
   polaroidImage: {fileID: 779676067}
   followPlayerScript: {fileID: 615897461}
+  parts: {fileID: 963445961}
 --- !u!65 &620726346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3078,7 +3079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &963445962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3101,6 +3102,7 @@ MonoBehaviour:
   - {fileID: 2125295251}
   - {fileID: 538251466}
   collectedPartsText: {fileID: 1766962121}
+  collectedPartsCount: 0
 --- !u!4 &963445963
 Transform:
   m_ObjectHideFlags: 0
@@ -4491,7 +4493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2, y: -2}
+  m_AnchoredPosition: {x: -2, y: -2.0000153}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1423630457
@@ -5025,7 +5027,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2f8beaaa9436ca44883b3b7ff16c3da6, type: 2}
   m_sharedMaterial: {fileID: 4704384393377596310, guid: 2f8beaaa9436ca44883b3b7ff16c3da6, type: 2}
@@ -6418,9 +6420,17 @@ PrefabInstance:
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 723994182562008078, guid: 52eb0d3fbc03da64d8037ab735ba07f0, type: 3}
+      propertyPath: controllerParts
+      value: 
+      objectReference: {fileID: 963445962}
+    - target: {fileID: 723994182562008078, guid: 52eb0d3fbc03da64d8037ab735ba07f0, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 723994182562008078, guid: 52eb0d3fbc03da64d8037ab735ba07f0, type: 3}
+      propertyPath: controllerPartsObject
+      value: 
+      objectReference: {fileID: 963445961}
     - target: {fileID: 723994182562008308, guid: 52eb0d3fbc03da64d8037ab735ba07f0, type: 3}
       propertyPath: m_Name
       value: Player

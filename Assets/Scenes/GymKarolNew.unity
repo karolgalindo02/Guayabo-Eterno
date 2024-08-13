@@ -431,6 +431,8 @@ MonoBehaviour:
   - {fileID: 779493410}
   - {fileID: 1081925808}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &161298387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -711,6 +713,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 779493410}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &293135895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -856,6 +860,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 1081925808}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &355327881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -980,6 +986,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 1081925808}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &538251469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1133,6 +1141,8 @@ MonoBehaviour:
   - {fileID: 58268243}
   - {fileID: 1081925808}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &704131630
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1291,6 +1301,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 58268243}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &741796193
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1604,7 +1616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &963445962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,6 +1639,7 @@ MonoBehaviour:
   - {fileID: 2125295251}
   - {fileID: 538251466}
   collectedPartsText: {fileID: 1766962121}
+  collectedPartsCount: 0
 --- !u!4 &963445963
 Transform:
   m_ObjectHideFlags: 0
@@ -2414,7 +2427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1423630456
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2671,7 +2684,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: '0
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2f8beaaa9436ca44883b3b7ff16c3da6, type: 2}
   m_sharedMaterial: {fileID: 4704384393377596310, guid: 2f8beaaa9436ca44883b3b7ff16c3da6, type: 2}
@@ -2961,6 +2976,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 58268243}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &1887933536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3364,6 +3381,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 58268243}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &2125295254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3432,6 +3451,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 294745709207256336, guid: 92a337889ecddda419ba2d11c9909d78, type: 3}
+      propertyPath: parts
+      value: 
+      objectReference: {fileID: 963445961}
     - target: {fileID: 294745709207256336, guid: 92a337889ecddda419ba2d11c9909d78, type: 3}
       propertyPath: dialogueText
       value: 
@@ -3582,6 +3605,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 779676067}
     - target: {fileID: 3047088571801628353, guid: 7b0d67c9284463f4d827f41083c5f7fa, type: 3}
+      propertyPath: dialogueLines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047088571801628353, guid: 7b0d67c9284463f4d827f41083c5f7fa, type: 3}
+      propertyPath: dialogueImages.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047088571801628353, guid: 7b0d67c9284463f4d827f41083c5f7fa, type: 3}
+      propertyPath: dialogueLines.Array.data[2]
+      value: Al encontrar dos deberas subir las escaleras...
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047088571801628353, guid: 7b0d67c9284463f4d827f41083c5f7fa, type: 3}
+      propertyPath: dialogueLines.Array.data[3]
+      value: "Y as\xED, hasta completar la polaroid!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047088571801628353, guid: 7b0d67c9284463f4d827f41083c5f7fa, type: 3}
+      propertyPath: dialogueLines.Array.data[4]
+      value: Gracias!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047088571801628353, guid: 7b0d67c9284463f4d827f41083c5f7fa, type: 3}
       propertyPath: dialogueImages.Array.data[0]
       value: 
       objectReference: {fileID: 779493410}
@@ -3589,6 +3632,14 @@ PrefabInstance:
       propertyPath: dialogueImages.Array.data[1]
       value: 
       objectReference: {fileID: 58268243}
+    - target: {fileID: 3047088571801628353, guid: 7b0d67c9284463f4d827f41083c5f7fa, type: 3}
+      propertyPath: dialogueImages.Array.data[2]
+      value: 
+      objectReference: {fileID: 1081925808}
+    - target: {fileID: 3047088571801628353, guid: 7b0d67c9284463f4d827f41083c5f7fa, type: 3}
+      propertyPath: dialogueImages.Array.data[3]
+      value: 
+      objectReference: {fileID: 1081925808}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b0d67c9284463f4d827f41083c5f7fa, type: 3}
 --- !u!1001 &5602025240078347525
@@ -3728,6 +3779,10 @@ PrefabInstance:
       propertyPath: mirrorPrefab
       value: 
       objectReference: {fileID: 947027265}
+    - target: {fileID: 6757854912945338098, guid: 47bd58d82919cc144b1aa563558d118b, type: 3}
+      propertyPath: controllerPartsObject
+      value: 
+      objectReference: {fileID: 963445961}
     - target: {fileID: 6757854912945338101, guid: 47bd58d82919cc144b1aa563558d118b, type: 3}
       propertyPath: m_RootOrder
       value: 5

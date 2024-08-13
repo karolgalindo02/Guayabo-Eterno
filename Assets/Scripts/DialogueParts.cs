@@ -13,6 +13,8 @@ public class DialogueParts : MonoBehaviour
     [SerializeField] private GameObject[] dialogueImages; // Nuevo campo para las imágenes
     [SerializeField] private GameObject polaroidImage; // Nuevo campo para la imagen de la polaroid
 
+    [SerializeField] private GameObject[] partsList;
+
     private float typingTime = 0.05f;
 
     private bool isPlayerInRange;
@@ -21,11 +23,20 @@ public class DialogueParts : MonoBehaviour
 
     private ControllerParts controllerParts;
 
+    public GameObject MinipiezasGameObject; // Asigna aquí el otro GameObject desde el inspector
+
+    private List<GameObject> gameObjectsList;
+
 
     void Start()
     {
         // Encuentra el script ControllerParts en la escena
         controllerParts = FindObjectOfType<ControllerParts>();
+
+        ControllerParts MinipiezasScript = MinipiezasGameObject.GetComponent<ControllerParts>();
+
+        // Acceder a la lista
+        gameObjectsList = MinipiezasScript.gameObjects;
     }
 
     // Update is called once per frame
@@ -76,12 +87,12 @@ public class DialogueParts : MonoBehaviour
             polaroidImage.SetActive(true); // Activar la imagen de la polaroid
             Time.timeScale = 1f;
             DeactivateAllImages(); // Desactivar todas las imágenes cuando el diálogo termine
-            //ameObject.SetActive(false);
+            gameObject.SetActive(false);
             controllerParts.collectedPartsCount++;
             controllerParts.UpdateCollectedPartsText();
             
-
-            Destroy(gameObject);
+            gameObjectsList.Remove(gameObject);
+            //Destroy(gameObject);
         }
     }
 

@@ -102,7 +102,7 @@ public class PlayerController2 : MonoBehaviour
         // Activar objetos aleatorios desde el ControllerParts
         
         
-        //controllerParts.ActivateRandomObjects();
+        controllerParts.ActivateRandomObjects();
         
 
         yield return new WaitForSeconds(1.2f); // el tiempo es para que el jugador2 tenga tiempo de ir a la pos del 1

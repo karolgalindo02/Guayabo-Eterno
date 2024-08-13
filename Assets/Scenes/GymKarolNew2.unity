@@ -599,6 +599,8 @@ MonoBehaviour:
   - {fileID: 779493410}
   - {fileID: 1081925808}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &161298387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1183,6 +1185,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 779493410}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &293135895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1440,6 +1444,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 1081925808}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &355327881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1785,6 +1791,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 1081925808}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &538251469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2089,6 +2097,8 @@ MonoBehaviour:
   - {fileID: 58268243}
   - {fileID: 1081925808}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &704131630
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2331,6 +2341,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 58268243}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &741796193
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5642,6 +5654,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 58268243}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &1887933536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6311,6 +6325,8 @@ MonoBehaviour:
   - {fileID: 1081925808}
   - {fileID: 58268243}
   polaroidImage: {fileID: 779676067}
+  partsList: []
+  MinipiezasGameObject: {fileID: 963445961}
 --- !u!65 &2125295254
 BoxCollider:
   m_ObjectHideFlags: 0

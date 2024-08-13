@@ -19,6 +19,15 @@ public class DialogueParts : MonoBehaviour
     private bool didDialogueStart;
     private int lineIndex;
 
+    private ControllerParts controllerParts;
+
+
+    void Start()
+    {
+        // Encuentra el script ControllerParts en la escena
+        controllerParts = FindObjectOfType<ControllerParts>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -67,6 +76,12 @@ public class DialogueParts : MonoBehaviour
             polaroidImage.SetActive(true); // Activar la imagen de la polaroid
             Time.timeScale = 1f;
             DeactivateAllImages(); // Desactivar todas las imágenes cuando el diálogo termine
+            //ameObject.SetActive(false);
+            controllerParts.collectedPartsCount++;
+            controllerParts.UpdateCollectedPartsText();
+            
+
+            Destroy(gameObject);
         }
     }
 

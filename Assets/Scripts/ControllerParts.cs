@@ -9,7 +9,7 @@ public class ControllerParts : MonoBehaviour
     public TMP_Text collectedPartsText; // Campo para el texto en el canvas
     private int activeIndex1 = -1;
     private int activeIndex2 = -1;
-    private int collectedPartsCount = 0; // Contador de piezas recogidas
+    public int collectedPartsCount = 0; // Contador de piezas recogidas
 
     void Start()
     {
@@ -23,6 +23,8 @@ public class ControllerParts : MonoBehaviour
 
     public void ActivateRandomObjects()
     {
+        
+        List<GameObject> validGameObjects = new List<GameObject>();
         // Desactivar todos los GameObjects primero
         foreach (GameObject obj in gameObjects)
         {
@@ -43,6 +45,7 @@ public class ControllerParts : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         // Verificar si el objeto con el que colisionamos es una de las piezas activas
         for (int i = 0; i < gameObjects.Length; i++)
         {
@@ -56,7 +59,7 @@ public class ControllerParts : MonoBehaviour
         }
     }
 
-    private void UpdateCollectedPartsText()
+    public void UpdateCollectedPartsText()
     {
         collectedPartsText.text = "" + collectedPartsCount;
     }

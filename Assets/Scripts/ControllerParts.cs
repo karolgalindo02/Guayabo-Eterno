@@ -26,7 +26,7 @@ public class ControllerParts : MonoBehaviour
 
     public void ActivateRandomObjects()
     {
-        Debug.Log(gameObjects.Count);
+        //Debug.Log(gameObjects.Count);
         if(gameObjects.Count != 0)
         { 
             List<GameObject> validGameObjects = new List<GameObject>();

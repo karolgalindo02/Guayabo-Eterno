@@ -7,7 +7,7 @@ public class LoadScene : MonoBehaviour
     public void LoadGameScene()
     {
         AudioManagment.Instance.PlayMusic(musicName);
-        SceneManager.LoadScene("GymKarolNew");
+        SceneManager.LoadScene("GymKarolNew2");
     }
        
         

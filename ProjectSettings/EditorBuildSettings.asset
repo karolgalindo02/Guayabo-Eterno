@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 228ca16d8c96f114fbe940be810e4560
   - enabled: 1
-    path: Assets/Scenes/GymKarolNew.unity
-    guid: 3a693af90c9aed848a838ba6c73fad72
+    path: Assets/Scenes/GymKarolNew2.unity
+    guid: ba6b49b423fa2d44aa5097378e63bac5
   m_configObjects: {}

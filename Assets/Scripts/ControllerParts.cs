@@ -13,6 +13,7 @@ public class ControllerParts : MonoBehaviour
 
     [SerializeField] private GameObject GameBoard;
     [SerializeField] private GameObject GameManager;
+    [SerializeField] private GameObject polaroidImage;
 
     void Start()
     {
@@ -50,6 +51,7 @@ public class ControllerParts : MonoBehaviour
         {
             //logica para activar el puzzle
             //Debug.Log("Piezas recolectadas");
+            polaroidImage.SetActive(false); // Deactivate polaroid image
             GameManager.SetActive(true);
             GameBoard.SetActive(true);
         }

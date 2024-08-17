@@ -10,6 +10,8 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject[] dialogueImages; // New field for images
+    [SerializeField] private GameObject polaroidImage; // New field for polaroid image
 
     private float typingTime = 0.05f;
 
@@ -20,7 +22,7 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.Space))
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.Return))
         {
             if (!didDialogueStart)
             {
@@ -44,6 +46,7 @@ public class Dialogue : MonoBehaviour
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
         dialogueMark.SetActive(false);
+        polaroidImage.SetActive(false); // Deactivate polaroid image
         lineIndex = 0;
         Time.timeScale = 0f;
         StartCoroutine(ShowLine());
@@ -61,18 +64,38 @@ public class Dialogue : MonoBehaviour
             didDialogueStart = false;
             dialoguePanel.SetActive(false);
             dialogueMark.SetActive(true);
+            polaroidImage.SetActive(true); // Activate polaroid image
             Time.timeScale = 1f;
+            DeactivateAllImages(); // Deactivate all images when dialogue ends
         }
     }
 
     private IEnumerator ShowLine()
     {
         dialogueText.text = string.Empty;
+        ActivateImage(lineIndex); // Activate the corresponding image
 
         foreach (char ch in dialogueLines[lineIndex])
         {
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(typingTime);
+        }
+    }
+
+    private void ActivateImage(int index)
+    {
+        DeactivateAllImages(); // Deactivate all images first
+        if (index < dialogueImages.Length)
+        {
+            dialogueImages[index].SetActive(true);
+        }
+    }
+
+    private void DeactivateAllImages()
+    {
+        foreach (GameObject image in dialogueImages)
+        {
+            image.SetActive(false);
         }
     }
 

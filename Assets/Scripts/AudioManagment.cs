@@ -12,8 +12,9 @@ public class AudioManagment : MonoBehaviour
     [Header ("Audio Clip")]
    public AudioClip Theme;
    public AudioClip Death;
-   public AudioClip Walk;
+   public AudioClip Step;
    public AudioClip Win;
+   public AudioClip Jump;
 
     private void Awake() {
         if(Instance != null)

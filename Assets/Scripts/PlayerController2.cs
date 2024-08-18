@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 
 public class PlayerController2 : MonoBehaviour
 {
@@ -20,9 +18,19 @@ public class PlayerController2 : MonoBehaviour
     private CanvasGroup blinkCanvasGroup;
     private bool isGrounded;
 
+    //Instanciar Audiomanager
+    AudioManagment audioManagment;
+    //Ajuste de frecuencia de pasos
+     private float stepDelay = 0.5f; 
+    private float lastStepTime = 0f;
+
     // Referencia al GameObject con el script ControllerParts
     [SerializeField] private GameObject controllerPartsObject;
     private ControllerParts controllerParts;
+
+    private void Awake() {
+        audioManagment = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManagment>();
+    }
 
     void Start()
     {
@@ -63,16 +71,31 @@ public class PlayerController2 : MonoBehaviour
 
         animator.SetBool("walking", x != 0.0f || y != 0.0f);
 
+        if (x != 0.0f || y != 0.0f)
+        {
+            PlayStepSound();
+        }
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            audioManagment.PlaySFX(audioManagment.Jump);
         }
 
         if (!isGrounded)
         {
             rb.AddForce(Vector3.up * customGravity);
+            //audioManagment.PlaySFX(audioManagment.Jump);
         }
     }
+void PlayStepSound()
+{
+    if (isGrounded && Time.time > lastStepTime + stepDelay)
+    {
+        audioManagment.PlaySFX(audioManagment.Step);
+        lastStepTime = Time.time;
+    }
+}
 
     private void OnCollisionEnter(Collision collision)
     {

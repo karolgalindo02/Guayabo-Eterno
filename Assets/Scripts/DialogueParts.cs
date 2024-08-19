@@ -10,8 +10,9 @@ public class DialogueParts : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
     [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private GameObject[] dialogueImages; // Nuevo campo para las imágenes
-    [SerializeField] private GameObject polaroidImage; // Nuevo campo para la imagen de la polaroid
+    [SerializeField] private GameObject[] dialogueImages; 
+    [SerializeField] private GameObject polaroidImage; 
+    [SerializeField] private AudioClip[] dialogueAudioClips; 
 
     [SerializeField] private GameObject[] partsList;
 
@@ -20,13 +21,14 @@ public class DialogueParts : MonoBehaviour
     private bool isPlayerInRange;
     private bool didDialogueStart;
     private int lineIndex;
+    private AudioSource audioSource; 
+    private bool barkPlayed; 
 
     private ControllerParts controllerParts;
 
-    public GameObject MinipiezasGameObject; // Asigna aquí el otro GameObject desde el inspector
+    public GameObject MinipiezasGameObject; 
 
     private List<GameObject> gameObjectsList;
-
 
     void Start()
     {
@@ -37,9 +39,11 @@ public class DialogueParts : MonoBehaviour
 
         // Acceder a la lista
         gameObjectsList = MinipiezasScript.gameObjects;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        barkPlayed = false; // Inicializar el flag
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.Return))
@@ -58,7 +62,6 @@ public class DialogueParts : MonoBehaviour
                 dialogueText.text = dialogueLines[lineIndex];
             }
         }
-
     }
 
     private void StartDialogue()
@@ -66,7 +69,7 @@ public class DialogueParts : MonoBehaviour
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
         dialogueMark.SetActive(false);
-        polaroidImage.SetActive(false); // Desactivar la imagen de la polaroid
+        polaroidImage.SetActive(false);
         lineIndex = 0;
         Time.timeScale = 0f;
         StartCoroutine(ShowLine());
@@ -84,33 +87,54 @@ public class DialogueParts : MonoBehaviour
             didDialogueStart = false;
             dialoguePanel.SetActive(false);
             dialogueMark.SetActive(true);
-            polaroidImage.SetActive(true); // Activar la imagen de la polaroid
+            polaroidImage.SetActive(true); 
             Time.timeScale = 1f;
-            DeactivateAllImages(); // Desactivar todas las imágenes cuando el diálogo termine
+            DeactivateAllImages(); 
+            barkPlayed = false; 
             gameObject.SetActive(false);
             controllerParts.collectedPartsCount++;
             controllerParts.UpdateCollectedPartsText();
             
             gameObjectsList.Remove(gameObject);
-            //Destroy(gameObject);
+
         }
     }
 
     private IEnumerator ShowLine()
     {
         dialogueText.text = string.Empty;
-        ActivateImage(lineIndex); // Activar la imagen correspondiente
+        ActivateImage(lineIndex); 
 
+        if (lineIndex < dialogueAudioClips.Length)
+        {
+            audioSource.clip = dialogueAudioClips[lineIndex];
+            if (audioSource.clip.name == "Bark" && !barkPlayed)
+            {
+                audioSource.Play();
+                barkPlayed = true;
+            }
+            else if (audioSource.clip.name != "Bark")
+            {
+                audioSource.Play();
+            }
+        }
+
+        int charCount = 0;
         foreach (char ch in dialogueLines[lineIndex])
         {
             dialogueText.text += ch;
+            charCount++;
+            if (charCount % 3 == 0 && audioSource.clip != null && audioSource.clip.name != "Bark")
+            {
+                audioSource.PlayOneShot(audioSource.clip);
+            }
             yield return new WaitForSecondsRealtime(typingTime);
         }
     }
 
     private void ActivateImage(int index)
     {
-        DeactivateAllImages(); // Desactivar todas las imágenes primero
+        DeactivateAllImages();
         if (index < dialogueImages.Length)
         {
             dialogueImages[index].SetActive(true);

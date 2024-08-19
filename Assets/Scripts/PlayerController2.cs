@@ -23,11 +23,14 @@ public class PlayerController2 : MonoBehaviour
     // Referencia al GameObject con el script ControllerParts
     [SerializeField] private GameObject controllerPartsObject;
     private ControllerParts controllerParts;
+    public AudioClip stepsWood;
+    private AudioSource audioSource;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
+        audioSource = gameObject.AddComponent<AudioSource>();
 
         blinkCanvasGroup = blinkPanel.GetComponent<CanvasGroup>();
         if (blinkCanvasGroup == null)
@@ -41,6 +44,9 @@ public class PlayerController2 : MonoBehaviour
         {
             controllerParts = controllerPartsObject.GetComponent<ControllerParts>();
         }
+
+        audioSource.clip = stepsWood;
+        audioSource.loop = true; // Loop the audio clip
     }
 
     void Update()
@@ -50,6 +56,7 @@ public class PlayerController2 : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector3 moveDir = new Vector3(x, 0, y);
+        
         rb.velocity = new Vector3(moveDir.x * speed, rb.velocity.y, moveDir.z * speed);
 
         if (x != 0 && x < 0)
@@ -62,6 +69,21 @@ public class PlayerController2 : MonoBehaviour
         }
 
         animator.SetBool("walking", x != 0.0f || y != 0.0f);
+
+        if (x != 0.0f || y != 0.0f)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -98,12 +120,8 @@ public class PlayerController2 : MonoBehaviour
         Vector3 newPlayerPosition = new Vector3(25.1000004f, 18.5f, -31.2999992f);
         transform.position = newPlayerPosition;
 
-
         // Activar objetos aleatorios desde el ControllerParts
-        
-        
         controllerParts.ActivateRandomObjects();
-        
 
         yield return new WaitForSeconds(1.2f); // el tiempo es para que el jugador2 tenga tiempo de ir a la pos del 1
 
@@ -115,5 +133,23 @@ public class PlayerController2 : MonoBehaviour
             yield return null;
         }
         blinkCanvasGroup.alpha = 0;
+    }
+
+    // Method to pause the footstep audio
+    public void PauseFootsteps()
+    {
+        if (audioSource.isPlaying)
+        {
+            audioSource.Pause();
+        }
+    }
+
+    // Method to resume the footstep audio
+    public void ResumeFootsteps()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.UnPause();
+        }
     }
 }

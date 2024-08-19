@@ -12,12 +12,20 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject[] dialogueImages; // New field for images
     [SerializeField] private GameObject polaroidImage; // New field for polaroid image
+    [SerializeField] private AudioClip[] dialogueAudioClips; // New field for audio clips
 
     private float typingTime = 0.05f;
-
     private bool isPlayerInRange;
     private bool didDialogueStart;
     private int lineIndex;
+    private AudioSource audioSource; // AudioSource component
+    private bool barkPlayed; // Flag to track if "Bark" has been played
+
+    void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>(); // Add AudioSource component
+        barkPlayed = false; // Initialize the flag
+    }
 
     // Update is called once per frame
     void Update()
@@ -38,7 +46,6 @@ public class Dialogue : MonoBehaviour
                 dialogueText.text = dialogueLines[lineIndex];
             }
         }
-
     }
 
     private void StartDialogue()
@@ -67,6 +74,7 @@ public class Dialogue : MonoBehaviour
             polaroidImage.SetActive(true); // Activate polaroid image
             Time.timeScale = 1f;
             DeactivateAllImages(); // Deactivate all images when dialogue ends
+            barkPlayed = false; // Reset the flag when dialogue ends
         }
     }
 
@@ -75,9 +83,29 @@ public class Dialogue : MonoBehaviour
         dialogueText.text = string.Empty;
         ActivateImage(lineIndex); // Activate the corresponding image
 
+        if (lineIndex < dialogueAudioClips.Length)
+        {
+            audioSource.clip = dialogueAudioClips[lineIndex];
+            if (audioSource.clip.name == "Bark" && !barkPlayed)
+            {
+                audioSource.Play();
+                barkPlayed = true; // Set the flag to true after playing "Bark"
+            }
+            else if (audioSource.clip.name != "Bark")
+            {
+                audioSource.Play();
+            }
+        }
+
+        int charCount = 0;
         foreach (char ch in dialogueLines[lineIndex])
         {
             dialogueText.text += ch;
+            charCount++;
+            if (charCount % 3 == 0 && audioSource.clip != null && audioSource.clip.name != "Bark")
+            {
+                audioSource.PlayOneShot(audioSource.clip);
+            }
             yield return new WaitForSecondsRealtime(typingTime);
         }
     }
@@ -99,18 +127,18 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == playerPrefab)
+        if (other.gameObject == playerPrefab)
         {
             isPlayerInRange = true;
             dialogueMark.SetActive(true);
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject == playerPrefab)
+        if (other.gameObject == playerPrefab)
         {
             isPlayerInRange = false;
             dialogueMark.SetActive(false);

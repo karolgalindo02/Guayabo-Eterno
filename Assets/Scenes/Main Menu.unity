@@ -418,7 +418,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45, y: 343}
+  m_AnchoredPosition: {x: 45, y: 364}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &187234912
@@ -1162,7 +1162,6 @@ MonoBehaviour:
   Theme: {fileID: 8300000, guid: a642c7507f22c3b43a6d14cdc1708a30, type: 3}
   Death: {fileID: 0}
   Walk: {fileID: 0}
-  Walk: {fileID: 0}
   Win: {fileID: 0}
 --- !u!4 &1063046641
 Transform:
@@ -1585,7 +1584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 11, y: 146}
+  m_AnchoredPosition: {x: 47, y: 146}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1621433630
@@ -2101,8 +2100,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Karol Galindo\nAndres Gomez\nJuan Mu\xF1oz \nValentina Arias\nAngie Molina\n\n\n\n\n\n\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2f8beaaa9436ca44883b3b7ff16c3da6, type: 2}
+  m_sharedMaterial: {fileID: 4704384393377596310, guid: 2f8beaaa9436ca44883b3b7ff16c3da6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2132,7 +2131,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 4
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2191,7 +2190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5046176863000837247
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2233,7 +2232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12, y: 177}
+  m_AnchoredPosition: {x: -75, y: 177}
   m_SizeDelta: {x: 435.211, y: 111.035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5046176863503946849
@@ -2256,7 +2255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nosotros
+  m_text: NOSOTROS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a8c39e0c421285746af3eb87b8408cf5, type: 2}
   m_sharedMaterial: {fileID: 4295483579769097779, guid: a8c39e0c421285746af3eb87b8408cf5, type: 2}
@@ -2289,7 +2288,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2319,7 +2318,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -28.008713, y: 0, z: 0, w: 0}
+  m_margin: {x: -28.008713, y: 0, z: -203.7061, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2613,6 +2612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c525f614cf32e4890eac7f839260e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicName: 
 --- !u!1 &5046176863835861251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,7 +2906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 18, y: -29.19516}
+  m_AnchoredPosition: {x: 18, y: -29.19519}
   m_SizeDelta: {x: -857.3, y: -283.131}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5046176864017069556
@@ -3427,7 +3427,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 17
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4132,8 +4132,8 @@ MonoBehaviour:
   m_text: "PROGRAMADOR, ANIMACIONES\n\nPROGRAMADOR\n\nDISE\xD1O DE NIVEL\n\nDISE\xD1ADOR
     VISUAL\n\n\nSONIDO, UX/UI"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2f8beaaa9436ca44883b3b7ff16c3da6, type: 2}
+  m_sharedMaterial: {fileID: 4704384393377596310, guid: 2f8beaaa9436ca44883b3b7ff16c3da6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

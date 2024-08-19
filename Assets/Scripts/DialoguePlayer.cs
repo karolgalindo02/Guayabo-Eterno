@@ -13,7 +13,7 @@ public class DialoguePlayer : MonoBehaviour
     [SerializeField] private GameObject[] dialogueImages; // New field for images
     [SerializeField] private GameObject polaroidImage; // New field for polaroid image
     [SerializeField] private FollowPlayer followPlayerScript; // Referencia al script FollowPlayer
-
+    [SerializeField] private AudioClip[] dialogueAudioClips; // New field for audio clips
 
     public GameObject parts;
     private float typingTime = 0.05f;
@@ -22,6 +22,12 @@ public class DialoguePlayer : MonoBehaviour
     private bool didDialogueStart;
     private int lineIndex;
     private bool isFollowingPlayer; // New flag to check if following player
+    private AudioSource audioSource; // AudioSource component
+
+    void Start()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>(); // Add AudioSource component
+    }
 
     // Update is called once per frame
     void Update()
@@ -83,9 +89,21 @@ public class DialoguePlayer : MonoBehaviour
         dialogueText.text = string.Empty;
         ActivateImage(lineIndex); // Activate the corresponding image
 
+        if (lineIndex < dialogueAudioClips.Length)
+        {
+            audioSource.clip = dialogueAudioClips[lineIndex];
+            audioSource.Play();
+        }
+
+        int charCount = 0;
         foreach (char ch in dialogueLines[lineIndex])
         {
             dialogueText.text += ch;
+            charCount++;
+            if (charCount % 3 == 0 && audioSource.clip != null && audioSource.clip.name != "Bark")
+            {
+                audioSource.PlayOneShot(audioSource.clip);
+            }
             yield return new WaitForSecondsRealtime(typingTime);
         }
     }
@@ -107,18 +125,18 @@ public class DialoguePlayer : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == playerPrefab && !isFollowingPlayer)
+        if (other.gameObject == playerPrefab && !isFollowingPlayer)
         {
             isPlayerInRange = true;
             dialogueMark.SetActive(true);
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OntriggerExit(Collider other)
     {
-        if (collision.gameObject == playerPrefab)
+        if (other.gameObject == playerPrefab)
         {
             isPlayerInRange = false;
             dialogueMark.SetActive(false);
